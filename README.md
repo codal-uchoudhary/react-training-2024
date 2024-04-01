@@ -1,1 +1,1 @@
-# react-traning-2024
+# react-training-2024
