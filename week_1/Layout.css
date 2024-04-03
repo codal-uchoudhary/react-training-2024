@@ -1,5 +1,5 @@
 #header{
-    background-color: aqua;
+    background-color: rgb(115, 176, 176);
     justify-content: center;
     font-size: 40px;
     display:block;
@@ -33,8 +33,8 @@
     width: 30%;
 }
 #footer{
-    background-color: blueviolet;
-    height: 200px;
+    background-color: rgb(198, 143, 249);
+    height: 150px;
     font-size: 40px;
     display: flex;
     justify-content: center;
