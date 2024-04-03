@@ -1,0 +1,13 @@
+1_april:
+- elements in HTML
+- attributes in elements
+- text formating
+- links in HTML
+- lists in HTML
+- tables in HTML
+
+2_april:
+- CSS (inline,internal,external)
+- block and inline elements
+- forms in HTML (elements,attributes,inputType)
+- basic layout and semantics in HTML 
