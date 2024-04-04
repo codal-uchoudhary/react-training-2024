@@ -75,7 +75,7 @@ body header{
     width: 33%;
 }
 #box2{
-    background-image: url("./images/ph2.jpg");
+    background-image: url("/images/ph2.jpg");
 }
 #box2 h1{
     color: white;
@@ -89,7 +89,7 @@ body header{
     margin-left: 25%;
 }
 #box3{
-    background-image: url(./images/ph1.jpeg);
+    background-image: url("/images/ph1.jpeg");
 }
 #box3 h1{
     color: white;
