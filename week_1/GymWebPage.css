@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+.title{
+    display: inline;
+    font-size: 25px;
+    position: relative;
+    font-weight: 600;
+    top: -30px;
+}
+
+.navbar{
+    padding-top: 13px;
+}
+.navbar ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.nvaItem{
+    font-size: 20px;
+    float: left;
+}
+plugin (1)
+app 0
+shipping 1
+menu 1
+
+:playing
+product
+sect
