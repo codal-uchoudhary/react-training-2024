@@ -4,16 +4,39 @@
     font-optical-sizing: auto;
     font-style: normal;
 }
+html{
+    overflow-x: hidden;
+    background:linear-gradient(135deg, #ffffff 0%,#4d5154 100%);
+}
+section{
+    padding-bottom: 300px;
+    padding-top: 100px;
+}
 header{
+    z-index: 100;
+    position: fixed;
+    top: 0;
     display: grid;
+    background:linear-gradient(135deg, #ffffff 0%,#4d5154 100%);
+    width: 100%;
     grid-template-columns: 1fr 1fr 2fr;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.logo{
+    background-color: aqua;
+}
+.logo_img{
+    position: absolute;
+    margin-top: 20px;
 }
 .title{
     display: inline;
     font-size: 25px;
-    position: relative;
+    position: absolute;
     font-weight: 600;
-    top: -30px;
+    margin-top: 20px;
+    margin-left:140px ;
 }
 
 .navbar{
@@ -28,11 +51,144 @@ header{
     font-size: 20px;
     float: left;
 }
-plugin (1)
-app 0
-shipping 1
-menu 1
+.head_buttons{
+    display: flex;
+    justify-content: right;
+}
+.button_section{
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
 
-:playing
-product
-sect
+.button{
+    height: 35px;
+    background-color: rgb(75, 77, 77);
+    margin-top: 30px;
+    width: 100px;
+    border-radius: 3px;
+    border: 0px solid;
+    position: relative;
+    bottom: 5px;
+    font-size: 16px;
+}
+.con1{
+    display: flex;
+}
+.con1_l{
+    width: 60%;
+}
+.con1_1_title{
+    font-size: 70px;
+    display: flex;
+    justify-content: left;
+    padding-top: 50px;
+    padding-left: 100px;
+
+}
+.con1_1_excert{
+    font-size: 30px;
+    display: flex;
+    justify-content: left;
+    padding-left: 80px;
+}
+.cont1_1_para{
+    margin-top: 60px;
+    width: 80%;
+    margin-left: 50px;
+}
+.con1_r{
+    background-color: rgb(97, 238, 238);
+}
+.types_of_ecercise{
+    font-size: 30px;
+    padding-left: 80px;
+    margin-top: 100px;
+}
+.grid_exercise{
+    width: 930px;
+    margin-top: 20px;
+    margin-left: 5%;
+    display: grid;
+    border-radius: 5px;
+    background:linear-gradient(135deg, #cccaca 0%,#4d5154 100%);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 10px 170px 50px 10px;
+}
+
+.ebox_img{
+    width: 250px;
+    height: 170px;
+    border-radius: 5px;
+}
+.ebox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#ebox1{
+    grid-row:2 / 3;
+    grid-column: 1 /2;
+}
+#ebox2{
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+#ebox3{
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+.ebox_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+#ebox_title1{
+    grid-row: 3/4;
+    grid-column: 1/2;
+}
+#ebox_title2{
+    grid-row: 3/4;
+    grid-column: 2/3;
+}
+#ebox_title3{
+    grid-row: 3/4;
+    grid-column: 3/4;
+}
+.bodybuilder_img{
+    position: fixed;
+    top: 10px;
+    z-index: 110;
+    right: 50px;
+}
+.circle{
+    width: 900px;
+    height: 900px;
+    background-color: rgba(2, 2, 2, 0.801);
+    border-radius: 1000px;
+    position: fixed;
+    top: 100px;
+    right: -200px;
+    z-index: 90;
+}
+.plan_title{
+    width: 60%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+.plans{
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 70px;
+}
+.plan1{
+    background-color: rgba(41, 43, 43, 0.512);
+    height: 400px;
+    width: 250px;
+    border-radius: 20px;
+}
