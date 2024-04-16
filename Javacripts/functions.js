@@ -150,3 +150,31 @@ const member = {
 let fname=person1.fullName.bind(member)
 console.log(fname)
 
+
+//______________________________ refrenece and primitive____________________________________________
+
+// A primitive type has a fixed size in memory. For example, a number occupies eight bytes of memory, and a boolean value can be represented with only one bit.
+
+let num = 10;
+
+function change_num(x){
+    x = x*10;
+    return x;
+}
+
+console.log(num)
+change_num(num)
+console.log(num)
+
+// Objects, arrays, and functions are reference types. so , refrence contain real address of argument.
+
+cars = ['c1','c2','c3'];
+
+function change_cars(ary){
+    ary[0]='c100'
+    return ary
+}
+
+console.log(cars)
+change_cars(cars)
+console.log(cars)
