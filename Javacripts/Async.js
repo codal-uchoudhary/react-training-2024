@@ -54,9 +54,11 @@ console.log("this statement is executed before above Hello world")
 // 3.pending: Promise is still pending i.e. not fulfilled or rejected yet
 // 4.settled: Promise has been fulfilled or rejected
 
+
 let promise = new Promise(function (resolve, reject) {
 	const x = 10;
 	const y = 10;
+	setTimeout
 	if (x != y) {
 		resolve();
 	} else {
@@ -98,4 +100,5 @@ async function display() {
 }
 
 display();
+console.log("this will print before display() function")
 
