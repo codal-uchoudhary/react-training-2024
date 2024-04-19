@@ -54,7 +54,7 @@ function App() {
 
   return (
     <>
-      <div className="ml-100px">
+      <div>
         <Form add_task={add_task_handler} list={taskList}></Form>
         <List list={taskList} statusHandling={statusHandling}></List>
       </div>

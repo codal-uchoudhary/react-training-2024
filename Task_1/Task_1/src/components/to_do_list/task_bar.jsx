@@ -9,14 +9,14 @@ const TaskBar = (props) => {
 
   if (props.status==true) {
     return (
-      <div className="mt-[20px] w-[900px] bg-neutral-700 mx-auto rounded-[5px]  border-2 border-black">
+      <div className="mt-10 w-[900px] bg-neutral-700 mx-auto rounded-2xl pb-1 pt-1">
         <div className=" flex justify-between  mt-3 mb-3 ml-2 mr-2">
-          <div className="ml-[20px] text-left text-white font-semibold text-[18px] w-[700px]">
+          <div className="ml-2 text-left text-white font-semibold w-[700px]">
             {props.title}
           </div>
           <DueDate date={due_date} />
         </div>
-        <div className="mt-[20px] mb-3 ml-2 mr-2 bg-green-500 text-white text-[18px] font-semibold rounded-[5px]">
+        <div className= "w-11/12 m-auto mb-2 mt-2 bg-green-500 text-white font-semibold rounded-2xl">
           <button>Done</button>
         </div>
       </div>
@@ -25,28 +25,28 @@ const TaskBar = (props) => {
 
   if (remaning_minutes <= 0) {
     return (
-      <div className="mt-[20px] w-[900px] bg-neutral-700 mx-auto rounded-[5px]  border-2 border-black">
+      <div className="mt-10 w-[900px] bg-neutral-700 mx-auto rounded-2xl pb-1 pt-1">
         <div className=" flex justify-between  mt-3 mb-3 ml-2 mr-2">
-          <div className="ml-[20px] text-left text-white font-semibold text-[18px] w-[700px]">
+          <div className="ml-2 text-left text-white font-semibold w-[700px]">
             {props.title}
           </div>
           <DueDate date={due_date} />
         </div>
-        <div className="mt-[20px] mb-3 ml-2 mr-2 bg-red-600 text-white text-[18px] font-semibold rounded-[5px]">
+        <div className= "w-11/12 m-auto mb-2 mt-2 bg-red-500 text-white font-semibold rounded-2xl">
           <button>Incompeled</button>
         </div>
       </div>
     );
   }
   return (
-    <div className="mt-[20px] w-[900px] bg-neutral-700 mx-auto rounded-[5px]  border-2 border-black">
+    <div className="mt-10 w-[900px] bg-neutral-700 mx-auto rounded-2xl pb-1 pt-1">
       <div className=" flex justify-between  mt-3 mb-3 ml-2 mr-2">
-        <div className="ml-[20px] text-left text-white font-semibold text-[18px] w-[700px]">
+        <div className="ml-2 text-left text-white font-semibold w-[700px]">
           {props.title}
         </div>
         <DueDate date={due_date} />
       </div>
-      <div className="mt-[20px] mb-3 ml-2 mr-2 bg-purple-400 text-white text-[18px] font-semibold rounded-[5px]" onClick={()=>{props.statusHandling(props.id)}}>
+      <div className= "w-11/12 m-auto mb-2 mt-2 bg-purple-500 text-white font-semibold rounded-2xl" onClick={()=>{props.statusHandling(props.id)}}>
         <button>Pending</button>
       </div>
     </div>

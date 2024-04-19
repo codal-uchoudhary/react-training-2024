@@ -61,21 +61,21 @@ const List = (props) => {
     setfilter(newList);
   }
 
-  if (filter.length == 0) {
+  if (!filter.length) {
     return (
       <div className="mt-100px w-full text-center mt-[250px] mb-[200px]">
-        <h1 className="text-5xl font-bold  mt-100px mb-[100px]">To Do List</h1>
-        <h1 className="pt-[10px] text-[18px] font-semiblod  mt-100px mb-[100px] w-[600px] mx-auto h-[40px] rounded-[5px] bg-neutral-800 text-white">
+        <h1 className="text-5xl font-bold  mt-100px mb-20">To Do List</h1>
+        <h1 className="pt-[10px] font-semiblod w-[600px] mx-auto h-10 rounded-2xl bg-neutral-800 text-white">
           List is Empty
         </h1>
       </div>
     );
   }
   return (
-    <div className="mt-100px w-full text-center mt-[250px] mb-[200px]">
-      <h1 className="text-5xl font-bold  mt-100px mb-[100px]">To Do List</h1>
-      <div className="bg-neutral-800 w-[600px] h-[50px] m-auto rounded-[5px]">
-        <ul className="flex justify-evenly text-white text-[18px] font-semibold pt-[10px]">
+    <div className="w-full text-center mt-60 mb-20">
+      <h1 className="text-5xl font-bold mb-20">To Do List</h1>
+      <div className="bg-neutral-800 w-[600px] pb-2 pt-2 m-auto rounded-2xl">
+        <ul className="flex justify-evenly text-white font-semibold">
           <button onClick={setFilterAll}>All Tasks</button>
           <button onClick={setFilterCompeletedTask}>Compeleted Task</button>
           <button onClick={setFilterExpiredTask}>Expired Task</button>

@@ -7,10 +7,10 @@ const DueDate=(props)=>{
     let time = props.date.format('h:mm a')
 
     return(
-        <div className="w-[150px] bg-neutral-800 rounded-[10px] text-white">
-            <div className="text-[30px] font-bold">{day}</div>
-            <div className="text-[18px] font-semibold">{month+"-"+year}</div>
-            <div className="text-[18px] font-semibold">{time}</div>
+        <div className="w-40 bg-neutral-800 rounded-2xl text-white pb-2">
+            <div className="text-4xl font-bold pt-2">{day}</div>
+            <div className=" font-semibold">{month+"-"+year}</div>
+            <div className=" font-semibold">{time}</div>
         </div>
     )
 }
