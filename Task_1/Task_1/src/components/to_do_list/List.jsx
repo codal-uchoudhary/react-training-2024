@@ -3,7 +3,6 @@ import TaskBar from "./task_bar";
 import moment from "moment";
 
 const List = (props) => {
-
   console.log(props.list);
   const [filter, setfilter] = useState(props.list);
 
@@ -65,7 +64,15 @@ const List = (props) => {
     return (
       <div className="mt-100px w-full text-center mt-[250px] mb-[200px]">
         <h1 className="text-5xl font-bold  mt-100px mb-20">To Do List</h1>
-        <h1 className="pt-[10px] font-semiblod w-[600px] mx-auto h-10 rounded-2xl bg-neutral-800 text-white">
+        <div className="bg-neutral-800 w-[600px] pb-2 pt-2 m-auto rounded-2xl">
+          <ul className="flex justify-evenly text-white font-semibold">
+            <button onClick={setFilterAll}>All Tasks</button>
+            <button onClick={setFilterCompeletedTask}>Compeleted Task</button>
+            <button onClick={setFilterExpiredTask}>Expired Task</button>
+            <button onClick={setFilterPendingTask}>Pending Task</button>
+          </ul>
+        </div>
+        <h1 className="pt-[10px] font-semiblod w-[600px] mx-auto h-10 rounded-2xl bg-neutral-800 text-white mt-4">
           List is Empty
         </h1>
       </div>
