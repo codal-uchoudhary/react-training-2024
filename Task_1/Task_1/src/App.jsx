@@ -38,7 +38,6 @@ function App() {
   const [taskList, setTaskList] = useState(TaskList);
 
   function add_task_handler(task, due) {
-    console.log("created")
     setTaskList((prev) => [...prev, { title: task, date: due, status: false ,id:Math.floor(Math.random() * 1000) + 1}]);
   }
 
