@@ -6,28 +6,41 @@ const TaskBar = (props) => {
   let current_date = moment().format();
   let remaning_minutes = due_date.diff(current_date, "minute");
 
+  function handleState() {
+    props.statusHandling((prev) => {
+      return [
+        ...prev.map((obj) =>
+         {
+          if (obj.id == props.id) {
+            obj.status = true;
+          }
+          return obj;
+        }
+      ),
+      ];
+    });
+  }
+
   let filterButton = (
-    <div
-      className="w-11/12 m-auto mb-2 mt-2 bg-purple-500 text-white font-semibold rounded-2xl"
-      onClick={() => {
-        props.statusHandling(props.id);
-      }}
+    <button
+      className="w-11/12 m-auto mb-2 bg-purple-500 text-white font-semibold rounded-2xl"
+      onClick={handleState}
     >
-      <button>Pending</button>
-    </div>
+      Pending
+    </button>
   );
 
   if (props.status) {
     filterButton = (
-      <div className="w-11/12 m-auto mb-2 mt-2 bg-green-500 text-white font-semibold rounded-2xl">
-        <button>Done</button>
-      </div>
+      <button className="w-11/12 m-auto mb-2 bg-green-500 text-white font-semibold rounded-2xl">
+        Done
+      </button>
     );
   } else if (remaning_minutes <= 0) {
     filterButton = (
-      <div className="w-11/12 m-auto mb-2 mt-2 bg-red-500 text-white font-semibold rounded-2xl">
-        <button>Incompeled</button>
-      </div>
+      <button className="w-11/12 m-auto mb-2 bg-red-500 text-white font-semibold rounded-2xl">
+        Incompeled
+      </button>
     );
   }
 
@@ -39,14 +52,7 @@ const TaskBar = (props) => {
         </div>
         <DueDate date={due_date} />
       </div>
-      <div
-        className="w-11/12 m-auto mb-2 mt-2 bg-purple-500 text-white font-semibold rounded-2xl"
-        onClick={() => {
-          props.statusHandling(props.id);
-        }}
-      >
-        {filterButton}
-      </div>
+      {filterButton}
     </div>
   );
 };

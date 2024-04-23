@@ -1,6 +1,9 @@
 import { useState } from "react";
+import moment from "moment";
+
 
 const Form = (props) => {
+  console.log("_______________form render___________________")
 
   const [formData,setFormData]=useState({
     date : null,
@@ -15,24 +18,24 @@ const Form = (props) => {
   function formSubmitHandler(e) {
    
     e.preventDefault();
-    if (!formData.task || !formData.date) {
-      console.log("not valid Input data");
+    if (!formData.task || !formData.date) {     // checking for empty input data
       return;
     }
-    let flag_duplicate_item = false;
-    props.list.map((obj) => {
-      if (obj.title == formData.task) {
-        flag_duplicate_item = true;
+    if(moment(formData.date).diff(moment().format(), "minute")<=0){    // checking for time , must be greater then current time.
+      return;
+    }
+    
+    for (let i in props.list){      // checking for duplicate task.
+      console.log(i)
+      if(props.list[i].title == formData.task){
+        return;
       }
-    });
-    if (flag_duplicate_item) {
-      return;
     }
-    props.add_task(formData.task, formData.date);
+    props.add_task
 
+    props.add_task((prev)=>[{date:formData.date,title:formData.task,id:Math.floor(Math.random() * 1000) + 1},...prev]);
     setFormData({...formData,task:"",date:null})
   }
-  console.log("formData", formData)
   return (
     <div className="w-full text-center mt-20">
       <h1 className="text-5xl font-bold">Let's Create Task</h1>

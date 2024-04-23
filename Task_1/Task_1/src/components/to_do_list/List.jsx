@@ -3,7 +3,7 @@ import TaskBar from "./task_bar";
 import moment from "moment";
 
 const List = (props) => {
-  console.log(props.list);
+  console.log("_____________________ list render____________________")
   const [filter, setfilter] = useState(props.list);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const List = (props) => {
         List is Empty
       </h1>:filter.map((obj, index) => (
         <TaskBar
-          key={index}
+          key={obj.index}
           title={obj.title}
           date={obj.date}
           status={obj.status}
