@@ -1,9 +1,9 @@
 import { useState } from "react";
 import moment from "moment";
+import { SnackbarProvider, enqueueSnackbar } from 'notistack';
 
 
 const Form = (props) => {
-  console.log("_______________form render___________________")
 
   const [formData,setFormData]=useState({
     date : null,
@@ -19,25 +19,27 @@ const Form = (props) => {
    
     e.preventDefault();
     if (!formData.task || !formData.date) {     // checking for empty input data
+      enqueueSnackbar('Provide valid title and date')
       return;
     }
     if(moment(formData.date).diff(moment().format(), "minute")<=0){    // checking for time , must be greater then current time.
+      enqueueSnackbar('Select future date and time')
       return;
     }
     
     for (let i in props.list){      // checking for duplicate task.
-      console.log(i)
       if(props.list[i].title == formData.task){
+        enqueueSnackbar('task is already exist in list')
         return;
       }
     }
-    props.add_task
-
-    props.add_task((prev)=>[{date:formData.date,title:formData.task,id:Math.floor(Math.random() * 1000) + 1},...prev]);
-    setFormData({...formData,task:"",date:null})
+    enqueueSnackbar('Task is added in list')
+    props.add_task((prev)=>[...prev,{date:formData.date, title:formData.task, status:false, id:Math.floor(Math.random() * 1000) + 1}]);
+    setFormData({...formData,task:"",date:moment().format()})
   }
   return (
     <div className="w-full text-center mt-20">
+      <SnackbarProvider />
       <h1 className="text-5xl font-bold">Let's Create Task</h1>
       <form
         className="mt-20 bg-neutral-700 w-[600px] m-auto pt-8 pb-10 rounded-2xl"

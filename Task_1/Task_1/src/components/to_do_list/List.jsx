@@ -3,8 +3,7 @@ import TaskBar from "./task_bar";
 import moment from "moment";
 
 const List = (props) => {
-  console.log("_____________________ list render____________________")
-  const [filter, setfilter] = useState(props.list);
+  const [filter, setfilter] = useState(props?.list);
 
   useEffect(() => {
     setfilter(props.list);
@@ -24,16 +23,16 @@ const List = (props) => {
   }
 
   function setFilterExpiredTask() {
-    let newList = props.list.filter(obj=>is_expired(obj) && !obj.status)
+    let newList = props?.list?.filter(obj=>is_expired(obj) && !obj.status)
     setfilter(newList);
   }
   function setFilterPendingTask() {
-    let newList = props.list.filter(obj=>!is_expired(obj) && !obj.status)
+    let newList = props?.list?.filter(obj=>!is_expired(obj) && !obj.status)
     setfilter(newList);
   }
 
   function setFilterCompeletedTask() {
-    let newList = props.list.filter(obj => obj.status);
+    let newList = props?.list?.filter(obj => obj.status);
     setfilter(newList);
   }
 

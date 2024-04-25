@@ -3,7 +3,6 @@ import List from "./components/to_do_list/List";
 import { useState } from "react";
 
 function App() {
-  console.log("_________________app render________________")
   const [taskList, setTaskList] = useState([]);
   return (
     <>
