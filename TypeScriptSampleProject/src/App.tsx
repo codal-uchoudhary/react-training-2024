@@ -1,24 +1,22 @@
-import './App.css'
-import Courses from './componenets/Courses'
-import Course from './componenets/Models/Course'
-import CourseForm from './componenets/CourseForm'
-import { useState } from 'react'
+import "./App.css";
+import React from "react";
+import Course from "./componenets/Courses/Course";
+import CourseModel from "./componenets/models/CourseModel";
+import CourseForm from "./componenets/Courses/CourseForm";
+import { useState } from "react";
 
-function App() {
-
-  const [courseData,setCourseData]=useState<Course[]>([])
-
-  const AddDataInList=(name:string)=>{
-    let course  = new Course(name,1,1);
-    setCourseData((prev)=>{return prev.concat(course)})
+const App: React.FC = () => {
+  const [courseList, setCourseList] = useState<CourseModel[]>([]);
+  const addCourseHandler=(obj:CourseModel)=>{
+    setCourseList((prev)=>[...prev,obj])
   }
 
   return (
-    <>
-    <CourseForm AddCourse={AddDataInList}/>
-    <Courses items={courseData}/>
-    </>
-  )
-}
+    <div>
+      <CourseForm addCourse={addCourseHandler} />
+      <Course itmes={courseList} />
+    </div>
+  );
+};
 
-export default App
+export default App;
