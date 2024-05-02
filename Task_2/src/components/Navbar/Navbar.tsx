@@ -1,25 +1,41 @@
 import React from "react";
 import { GoSearch } from "react-icons/go";
-import Logo from "./../../assets/pngwing.com.png"
+import Logo from "./../../assets/pngwing.com.png";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
-
-
   return (
     <div className="flex px-4 h-[70px] shadow-md">
       <div className="basis-2/5  flex justify-left py-5">
-        <div><img src={Logo} className="w-[60px] h-[40px]"/></div>
-        <a className="w-[100px] text-center hover:font-semibold" href="#">Home</a>
-        <a className="w-[100px] text-center hover:font-semibold" href="#">About</a>
-        <a className="w-[100px] text-center hover:font-semibold" href="#">Contact</a>
-        <a className="w-[100px] text-center hover:font-semibold" href="#">Help</a>
+        <div>
+          <img src={Logo} className="w-[60px] h-[40px]" />
+        </div>
+        <Link to="/" className="w-[100px] text-center hover:font-semibold">
+          Home
+        </Link>
+        <Link to="/about" className="w-[100px] text-center hover:font-semibold">
+          About
+        </Link>
+        <Link to="/contact" className="w-[100px] text-center hover:font-semibold">
+          Contact
+        </Link>
+        <Link to="" className="w-[100px] text-center hover:font-semibold">
+          Help
+        </Link>
       </div>
       <div className="basis-2/5 py-5 flex justify-end">
-        <input className="rounded-sm w-[250px] border border-gray-500 px-2 text-sm" placeholder="search here"/>
+        <input
+          className="rounded-sm w-[250px] border border-gray-500 px-2 text-sm"
+          placeholder="search here"
+        />
       </div>
       <div className="basis-1/5 py-5 flex justify-end">
-        <a className="w-[100px] text-center hover:font-semibold" href="#">SignIn</a>
-        <a className="w-[100px] text-center hover:font-semibold" href="#">SignUp</a>
+        <Link to="/login" className="w-[100px] text-center hover:font-semibold">
+          SignIn
+        </Link>
+        <Link to="" className="w-[100px] text-center hover:font-semibold">
+          SignUp
+        </Link>
       </div>
     </div>
   );
