@@ -21,9 +21,9 @@ const ProductList: React.FC = () => {
 
 
   return (
-    <div>
+    <div className="w-full grid grid-cols-1 sm:grid-cols-4 gap-x-24 gap-y-16 px-[50px] py-[100px]">
       {data.map((item) => (
-        <ProductCard productObj={item}/>
+        <ProductCard  productObj={item}/>
       ))}
     </div>
   );
