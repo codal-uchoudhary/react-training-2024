@@ -11,38 +11,38 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ productObj }) => {
 
-  const productId = productObj.id
+  const productId = productObj?.id
 
   const navigate = useNavigate();
 
   return (
     <div className=" w-[250px] rounded-md  shadow-sm relative hover:shadow-md" onClick={()=>{navigate(`/product/${productId}`);}}>
       <img
-        src={productObj.thumbnail}
+        src={productObj?.thumbnail}
         className="w-full m-auto h-[150px] rounded-t-md"
       />
       <div className="px-4 py-2">
         <div className="text-sm font-semibold text-zinc-400 pb-2">
-          {productObj.title}
+          {productObj?.title}
         </div>
         <div className="text-sm font-semibold">
-          {productObj.description.substring(0, 47) + " ..."}
+          {productObj?.description.substring(0, 47) + " ..."}
         </div>
         <div className="text-sm font-semibold text-zinc-400 pt-2 flex justify-between">
           <div>
-            {productObj.rating}
+            {productObj?.rating}
             <GoStarFill className="text-yellow-400 inline" />
           </div>
-          <div>{productObj.stock} left</div>
+          <div>{productObj?.stock} left</div>
         </div>
 
         <div className="text-lg font-semibold">
           <BsCurrencyDollar className="inline" />
-          {productObj.price}
+          {productObj?.price}
         </div>
       </div>
       <div className="w-[60px] h-[25px] bg-orange-600 text-sm text-white rounded-sm flex justify-evenly absolute top-1 right-1">
-        {productObj.discountPercentage}
+        {productObj?.discountPercentage}
         <AiOutlinePercentage className="inline mt-1" />
       </div>
     </div>
