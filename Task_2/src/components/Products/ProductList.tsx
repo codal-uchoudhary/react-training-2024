@@ -1,23 +1,22 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 
 const ProductList: React.FC = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://dummyjson.com/products");
-        const jsonData = await response.json();
-        setData(jsonData.products);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchData();
-  }, []);
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch("https://dummyjson.com/products");
+      const jsonData = await response.json();
+      setData(jsonData.products);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  },[])
+
+  useEffect(() => {fetchData();}, [fetchData]);
 
 
   return (

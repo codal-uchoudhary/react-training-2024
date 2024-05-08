@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import ProductModel from "../../Models/ProductModel";
 import { AiOutlinePercentage } from "react-icons/ai";
 import { BsCurrencyDollar } from "react-icons/bs";
@@ -16,21 +16,28 @@ const ProductPage: React.FC = () => {
   console.log(productId)
 
   const [data, setData] = useState<ProductModel|null>(null);
+  const [isLoading,setIsLoading] = useState(true)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log(productId)
-        const response = await fetch(`https://dummyjson.com/products/${productId}`);
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchData();
-  }, []);
+  const fetchData = useCallback(async () => {
+    try {
+      console.log("this is fetch function_______")
+      const response = await fetch(`https://dummyjson.com/products/${productId}`);
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.log("errors")
+    }finally{
+      setIsLoading(false)
+    }
+  },[])
+
+  useEffect(()=>{fetchData();},[fetchData]);
+
+
+  if(isLoading){
+    return(<h1>Loading ...</h1>)
+  }
 
 
   return (
