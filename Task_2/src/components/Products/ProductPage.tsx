@@ -21,6 +21,7 @@ const ProductPage: React.FC = () => {
 
   const fetchData = useCallback(async () => {
     try {
+      setIsLoading(true)
       console.log("this is fetch function_______")
       const response = await fetch(`https://dummyjson.com/products/${productId}`);
       const jsonData = await response.json();
