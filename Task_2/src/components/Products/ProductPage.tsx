@@ -64,7 +64,7 @@ const ProductPage: React.FC = () => {
           </div>
           <div className="flex justify-start pt-3">
             <button className="text-sm w-24 bg-orange-600 text-white rounded-sm h-8">
-              Buy Now
+              Add to Cart
             </button>
             <button>
               <FaRegHeart className="ml-12 text-2xl hover:text-orange-600" />
