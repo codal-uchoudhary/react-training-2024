@@ -18,6 +18,7 @@ const Login = () => {
 
   function submitHandler(event:React.FormEvent){
     event.preventDefault();
+    localStorage.setItem("isAuthenticated","true");
   }
 
 
@@ -32,7 +33,7 @@ const Login = () => {
           <input type="text" className="h-10 w-full rounded px-4 bg-gray-400 bg-opacity-40 text-sm" name="username"  value={formData.username ?? ''} onChange={(e)=> onChangeHandler(e)}></input>
           <label className="block mt-4">Password</label>
           <input type="password" className="h-10 w-full rounded px-4 bg-gray-400 bg-opacity-40 text-sm" name="password" value={formData.password ?? ''}></input>
-          <button className="block mt-24 w-full h-10  rounded bg-white">
+          <button className="block mt-24 w-full h-10  rounded bg-white" >
             Log In
           </button>
           <p className="text-sm m-auto text-center mt-4">not register yet? Sign Up</p>

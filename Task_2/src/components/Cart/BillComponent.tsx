@@ -1,10 +1,26 @@
 import { BsCurrencyDollar } from "react-icons/bs";
+import CartContext from "../../Store/ShoppingCart";
+import { useContext } from "react";
+import ProductModel from "../../Models/ProductModel";
 
 
+const BillComponent = (props:{productList:ProductModel[]}) => {
 
-const BillComponent = () => {
-  const Total_amount = 10002;
-  const discount = 2000;
+  const cartCtx = useContext(CartContext) 
+
+  let Total_amount = 0;
+  let discount = 0;
+
+  for(let i of cartCtx?.items?? []){
+    for (let j of props?.productList){
+      if(i.id === j.id){
+        Total_amount += i.count * j.price;
+        break;
+      }
+    }
+  }
+  discount = Total_amount/10;
+  
   const final_amount = Total_amount - discount;
 
   return (

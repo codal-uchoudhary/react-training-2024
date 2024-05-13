@@ -1,19 +1,31 @@
 import React from "react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import CartProductItem from "./CartProductItem";
 import ProductModel from "../../Models/ProductModel";
 import BillComponent from "./BillComponent";
+import CartContext from "../../Store/ShoppingCart";
+import { DiJava } from "react-icons/di";
+import ProductList from "../Products/ProductList";
 
 const CartPage: React.FC = () => {
+
+  const cartCtx = useContext(CartContext)
+
   const [data, setData] = useState<ProductModel[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("https://dummyjson.com/products");
-      const jsonData = await response.json();
-      setData(jsonData.products);
+      const ProductList:ProductModel[]=[]
+      for(let i of (cartCtx?.items ?? [])){
+        console.log(i.id)
+        const response = await fetch(`https://dummyjson.com/products/${i.id}`)
+        const jsonData = await response.json();
+        ProductList.push(jsonData)
+      }
+      setData(ProductList)
+      
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -35,7 +47,7 @@ const CartPage: React.FC = () => {
             <CartProductItem ProductObj={item} />
           ))}
         </div>
-        <BillComponent />
+        <BillComponent productList={data}/>
       </div>
     </div>
   );

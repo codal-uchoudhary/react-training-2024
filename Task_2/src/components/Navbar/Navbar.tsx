@@ -3,8 +3,17 @@ import { GoSearch } from "react-icons/go";
 import { RiShoppingCartLine } from "react-icons/ri";
 import Logo from "./../../assets/pngwing.com.png";
 import { Link } from "react-router-dom";
+import CartContext from "../../Store/ShoppingCart";
+import { useContext } from "react";
 
 const Navbar: React.FC = () => {
+
+
+  const cartCtx = useContext(CartContext)
+
+  const numberOfCartItems = cartCtx?.items.length;
+  console.log(cartCtx?.items.length) 
+
   return (
     <div className="flex px-4 h-[70px] shadow-md">
       <div className="basis-2/5  flex justify-left py-5">
@@ -37,8 +46,8 @@ const Navbar: React.FC = () => {
         <Link to="" className="w-[100px] text-center hover:font-semibold">
           SignUp
         </Link>
-        <Link to="/cart" className="w-[100px] text-center hover:font-semibold">
-          Cart <RiShoppingCartLine className=" inline font-semibold "/>
+        <Link to="/cart" className="w-[80px] text-center hover:font-semibold bg-orange-600 text-white rounded-sm">
+          Cart {numberOfCartItems}
         </Link>
       </div>
     </div>

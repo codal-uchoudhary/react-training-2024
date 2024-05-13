@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect,useCallback } from "react";
+import { useState,useContext, useEffect,useCallback } from "react";
 import ProductModel from "../../Models/ProductModel";
 import { AiOutlinePercentage } from "react-icons/ai";
 import { BsCurrencyDollar } from "react-icons/bs";
@@ -9,11 +9,13 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { IoMdShare } from "react-icons/io";
 import ProductGridImage from "./ProductImageGrig";
 import { useParams } from "react-router-dom";
+import CartContext from "../../Store/ShoppingCart";
 
 const ProductPage: React.FC = () => {
 
+  const cartCtx = useContext(CartContext)
+
   const {productId} = useParams();
-  console.log(productId)
 
   const [data, setData] = useState<ProductModel|null>(null);
   const [isLoading,setIsLoading] = useState(true)
@@ -22,7 +24,6 @@ const ProductPage: React.FC = () => {
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true)
-      console.log("this is fetch function_______")
       const response = await fetch(`https://dummyjson.com/products/${productId}`);
       const jsonData = await response.json();
       setData(jsonData);
@@ -63,7 +64,7 @@ const ProductPage: React.FC = () => {
             Price : {data?.price} <BsCurrencyDollar className="inline" />
           </div>
           <div className="flex justify-start pt-3">
-            <button className="text-sm w-24 bg-orange-600 text-white rounded-sm h-8">
+            <button className="text-sm w-24 bg-orange-600 text-white rounded-sm h-8" onClick={()=>{cartCtx?.addItemToCart(data?.id ?? 0)}}>
               Add to Cart
             </button>
             <button>
