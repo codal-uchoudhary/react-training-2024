@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { FaS } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { DiJava } from "react-icons/di";
-
+import AuthenticationContext from "../../Store/Authentication";
 
 const Navbar: React.FC = () => {
 
@@ -20,6 +20,7 @@ const Navbar: React.FC = () => {
   const [searchInput,setSearchInout] = useState("");
 
   const cartCtx = useContext(CartContext);
+  const AuthCtx = useContext(AuthenticationContext);
 
   const numberOfCartItems = cartCtx?.items.length;
   console.log(cartCtx?.items.length);
@@ -31,23 +32,13 @@ const Navbar: React.FC = () => {
 
   function InputChangeHandler(event:ChangeEvent<HTMLInputElement>){
     console.log(event.target.value)
+    console.log(searchInput)
     setSearchInout(event.target.value)
   }
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await fetch(`https://dummyjson.com/products/search?q=${searchInput}`);
-      const jsonData = await response.json();
-      const productId = jsonData.id;
-      console.log(jsonData)
-      navigate(`/product/${productId}`)
-    } catch (error) {
-      console.log("errors")
-    }
-  },[])
 
   function HandleKeyPress(event:KeyboardEvent<HTMLInputElement>){
     if(event.key === 'Enter'){
-      fetchData();
+      navigate(`/products/search/${searchInput}`)
     }
   }
 
@@ -98,10 +89,13 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <div className="basis-2/12 py-5 flex justify-evenly">
-        <Link to="/login" className="hover:text-green-600">
+        {AuthCtx?.isAuthenticated==="true"? <Link to="/login" className="hover:text-green-600">
+          <IoPersonAddOutline className="w-full m-auto text-lg mb-1"/>
+          Account
+        </Link>:  <Link to="/login" className="hover:text-green-600">
           <IoPersonAddOutline className="w-full m-auto text-lg mb-1"/>
           SignIn
-        </Link>
+        </Link>}
         <Link
           to="/cart"
           className="hover:text-orange-600"

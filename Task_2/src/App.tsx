@@ -8,6 +8,7 @@ import {RouterProvider,createRoutesFromElements,Route, createBrowserRouter} from
 import RootLayout from "./Pages/root";
 import CartPage from "./components/Cart/Cart";
 import ProductsPage from "./components/Products/ProductsPage";
+import ProductSearchPage from "./components/Products/ProductSearchPage";
 
 
 const router = createBrowserRouter(
@@ -22,7 +23,8 @@ const router = createBrowserRouter(
         {path:"/contact",element:<Contact/>},
         {path:"/login",element:<Login/>},
         {path:"/cart",element:<CartPage/>},
-        {path:"/products/category/:category",element:<ProductsPage/>}
+        {path:"/products/category/:category",element:<ProductsPage/>},
+        {path:"/products/search/:product",element:<ProductSearchPage/>}
       ]
     }
   ]

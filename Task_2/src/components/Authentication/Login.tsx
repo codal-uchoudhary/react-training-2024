@@ -1,5 +1,8 @@
 import React, { ChangeEvent, useEffect } from "react";
-import { useState,useRef } from "react";
+import { useState,useCallback,useContext } from "react";
+import AuthenticationContext from "../../Store/Authentication";
+import { useNavigate } from "react-router-dom";
+
 
 type FormData = {
   username: string | null;
@@ -7,6 +10,10 @@ type FormData = {
 };
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
+  const AuthCtx = useContext(AuthenticationContext)
 
 
   const [formData,SetForm] = useState<FormData>({username:null,password:null})
@@ -16,9 +23,33 @@ const Login = () => {
     SetForm({...formData,[name]:value})
   }
 
+  const fetchData = async ()=>{
+    try{
+      const response = await fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          
+          username: formData.username,
+          password: formData.password,
+        })
+      })
+      const res = await response.json()
+      const token = res.token;
+      localStorage.setItem("token", token);
+      localStorage.setItem("isAuthenticated", "true");
+      navigate("/")
+      AuthCtx?.setAuthenticatoin("true",token)
+
+    }catch(error){
+      console.error("Error fetching data:", error);
+    }
+  }
+  
+
   function submitHandler(event:React.FormEvent){
     event.preventDefault();
-    localStorage.setItem("isAuthenticated","true");
+    fetchData();
   }
 
 
@@ -32,7 +63,7 @@ const Login = () => {
           <label className="block mt-4">Username</label>
           <input type="text" className="h-10 w-full rounded px-4 bg-gray-400 bg-opacity-40 text-sm" name="username"  value={formData.username ?? ''} onChange={(e)=> onChangeHandler(e)}></input>
           <label className="block mt-4">Password</label>
-          <input type="password" className="h-10 w-full rounded px-4 bg-gray-400 bg-opacity-40 text-sm" name="password" value={formData.password ?? ''}></input>
+          <input type="password" className="h-10 w-full rounded px-4 bg-gray-400 bg-opacity-40 text-sm" name="password" value={formData.password ?? ''} onChange={(e)=> onChangeHandler(e)}></input>
           <button className="block mt-24 w-full h-10  rounded bg-white" >
             Log In
           </button>
