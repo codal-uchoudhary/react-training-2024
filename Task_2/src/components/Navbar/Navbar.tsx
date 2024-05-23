@@ -1,4 +1,4 @@
-import React, { useState,ChangeEvent, KeyboardEvent,useCallback } from "react";
+import React, { useState,ChangeEvent, KeyboardEvent } from "react";
 import { GoSearch } from "react-icons/go";
 import { BsCart2 } from "react-icons/bs";
 import { IoPersonAddOutline } from "react-icons/io5";
@@ -7,9 +7,7 @@ import Logo from "./../../assets/pngwing.com.png";
 import { Link } from "react-router-dom";
 import CartContext from "../../Store/ShoppingCart";
 import { useContext } from "react";
-import { FaS } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { DiJava } from "react-icons/di";
 import AuthenticationContext from "../../Store/Authentication";
 
 const Navbar: React.FC = () => {

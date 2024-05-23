@@ -22,7 +22,6 @@ const BillComponent = (props: { productList: ProductModel[] }) => {
   discount = Total_amount / 10;
   const shipping_fee = 2
   const Platform_fee = "FREE";
-  const final_amount = Total_amount - discount;
   const priceHeading1 = `Price Detail (${props.productList.length} Items)`
 
   return (

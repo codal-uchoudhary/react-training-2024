@@ -35,11 +35,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ productObj }) => {
           </div>
           <div>{productObj?.stock} left</div>
         </div>
-
-        {/* <div className="text-base font-semibold">
-          <BsCurrencyDollar className="inline" />
-          {productObj?.price}
-        </div> */}
       </div>
       <div className="w-[60px] h-[25px] bg-orange-600 text-sm text-white rounded-sm flex justify-evenly absolute top-1 right-1 font-bold">
         {productObj?.discountPercentage}

@@ -20,43 +20,42 @@ const RootLayout: React.FC = () => {
 
   const addItemToCartHandler = (id: number) => {
     const { items } = cart;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
-        return;
+    let flag = true;
+    items.filter((item) => {
+      if (id === item.id) {
+        flag = false;
       }
+    });
+    if (flag) {
+      items.push({ id: id, count: 1 });
+      setCart({ items: items });
     }
-    items.push({ id: id, count: 1 });
-    setCart({ items: items });
+
+    return;
   };
 
   const deleteItemFromCart = (id: number) => {
     const { items } = cart;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
-        items.splice(i,1);
-        console.log(items)
-        setCart({ items: items });
-        return;
-      }
-    }
+    let filterItem = items.filter((item) => item.id != id);
+    console.log(filterItem);
+    setCart({ items: filterItem });
   };
 
   const UpdateCountHandler = (id: number, operation: string) => {
     const { items } = cart;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
-        if (operation === "inc") {
-          items[i].count++;
-        } else {
-          items[i].count--;
-          if (items[i].count < 1) {
-            deleteItemFromCart(items[i].id);
+    items.filter((item)=>{
+      if(item.id===id){
+        if(operation=="inc"){
+          item.count++;
+          setCart({ items: items });
+        }else{
+          item.count--;
+          if(item.count<1){
+            deleteItemFromCart(item.id);
           }
         }
-        break;
       }
-    }
-    setCart({ items: items });
+    })
   };
 
   const ctxValue = {

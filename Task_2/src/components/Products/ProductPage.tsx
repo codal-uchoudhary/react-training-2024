@@ -10,7 +10,6 @@ import { IoMdShare } from "react-icons/io";
 import ProductGridImage from "./ProductImageGrig";
 import { useParams } from "react-router-dom";
 import CartContext from "../../Store/ShoppingCart";
-import { TbUfo } from "react-icons/tb";
 
 const ProductPage: React.FC = () => {
 
@@ -18,19 +17,17 @@ const ProductPage: React.FC = () => {
 
   const {productId} = useParams();
 
-  let isAdded = "Add to Cart";
-  if(cartCtx?.items){
-    for(let i of cartCtx.items){
-      if(i.id === Number(productId)){
-        isAdded = "Added To Cart";
-      }
-    }
-  }
 
 
   const [data, setData] = useState<ProductModel|null>(null);
   const [isLoading,setIsLoading] = useState(true)
-  const [isAddedToCart,setIsAddedToCart] = useState(isAdded)
+  const [itemIsAdded,setItemIsAdded] = useState("Add to Cart")
+
+  cartCtx?.items.filter(item=>{
+    if(item.id == Number(productId) && itemIsAdded=="Add to Cart"){
+      setItemIsAdded("Added To Cart");
+    }
+  })
 
 
   const fetchData = useCallback(async () => {
@@ -55,7 +52,6 @@ const ProductPage: React.FC = () => {
 
   function addItemToCartHandler(){
     cartCtx?.addItemToCart(data?.id ?? 0)
-    setIsAddedToCart("Added To Cart")
   }
 
 
@@ -82,7 +78,7 @@ const ProductPage: React.FC = () => {
           </div>
           <div className="flex justify-start pt-3">
             <button className="text-sm px-4 bg-orange-600 text-white rounded-sm h-8" onClick={addItemToCartHandler}>
-              {isAddedToCart}
+              {itemIsAdded}
             </button>
             <button>
               <FaRegHeart className="ml-12 text-2xl hover:text-orange-600" />
