@@ -10,6 +10,8 @@ import { IoMdShare } from "react-icons/io";
 import ProductGridImage from "./ProductImageGrig";
 import { useParams } from "react-router-dom";
 import CartContext from "../../Store/ShoppingCart";
+import SimilarProduct from "./SimilarProduct"
+
 
 const ProductPage: React.FC = () => {
 
@@ -93,6 +95,7 @@ const ProductPage: React.FC = () => {
         </div>
       </div>
       <ProductGridImage list={data?.images}/>
+      <SimilarProduct category={data?.category}/>
     </>
   );
 };

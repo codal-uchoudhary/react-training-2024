@@ -2,6 +2,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import { useState, useEffect,useCallback } from "react";
 import { useParams } from "react-router-dom";
+import ProductCartList from "./ProductCardList";
 
 
 const ProductsPage: React.FC = () => {
@@ -30,10 +31,8 @@ const ProductsPage: React.FC = () => {
     return(<h1>Loading...</h1>)
   }
   return (
-    <div className="w-full grid grid-cols-1 sm:grid-cols-4 gap-x-24 gap-y-16 px-[50px] py-[100px]">
-      {data.map((item) => (
-        <ProductCard  productObj={item}/>
-      ))}
+    <div className="py-[70px]">
+      <ProductCartList list={data}/>
     </div>
   );
 };
