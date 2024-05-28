@@ -20,17 +20,11 @@ const RootLayout: React.FC = () => {
 
   const addItemToCartHandler = (id: number) => {
     const { items } = cart;
-    let flag = true;
-    items.filter((item) => {
-      if (id === item.id) {
-        flag = false;
-      }
-    });
-    if (flag) {
+    let filteredCart = items.filter((item) => id===item.id)
+    if (filteredCart.length==0) {
       items.push({ id: id, count: 1 });
       setCart({ items: items });
     }
-
     return;
   };
 
@@ -43,19 +37,25 @@ const RootLayout: React.FC = () => {
 
   const UpdateCountHandler = (id: number, operation: string) => {
     const { items } = cart;
-    items.filter((item)=>{
+    let item_with_count_zero = null;
+    let newItems = items.map((item)=>{
       if(item.id===id){
         if(operation=="inc"){
           item.count++;
-          setCart({ items: items });
         }else{
           item.count--;
-          if(item.count<1){
-            deleteItemFromCart(item.id);
-          }
         }
       }
+      if(item.count<1){
+        item_with_count_zero=item.id
+      }
+      return item;
     })
+    if(item_with_count_zero){
+      deleteItemFromCart(item_with_count_zero)
+    }else{
+      setCart({items:newItems})
+    }
   };
 
   const ctxValue = {

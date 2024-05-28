@@ -21,16 +21,12 @@ const Navbar: React.FC = () => {
   const AuthCtx = useContext(AuthenticationContext);
 
   const numberOfCartItems = cartCtx?.items.length;
-  console.log(cartCtx?.items.length);
-
 
   function filterHandler(category:string){
     navigate(`/products/category/${category}`)
   }
 
   function InputChangeHandler(event:ChangeEvent<HTMLInputElement>){
-    console.log(event.target.value)
-    console.log(searchInput)
     setSearchInout(event.target.value)
   }
 
