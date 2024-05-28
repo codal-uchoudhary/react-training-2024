@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect,useCallback } from "react";
+import { useState,useContext, useEffect,useCallback } from "react";
 import ProductModel from "../../Models/ProductModel";
 import { AiOutlinePercentage } from "react-icons/ai";
 import { BsCurrencyDollar } from "react-icons/bs";
@@ -9,20 +9,32 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { IoMdShare } from "react-icons/io";
 import ProductGridImage from "./ProductImageGrig";
 import { useParams } from "react-router-dom";
+import CartContext from "../../Store/ShoppingCart";
+import SimilarProduct from "./SimilarProduct"
+
 
 const ProductPage: React.FC = () => {
 
+  const cartCtx = useContext(CartContext)
+
   const {productId} = useParams();
-  console.log(productId)
+
+
 
   const [data, setData] = useState<ProductModel|null>(null);
   const [isLoading,setIsLoading] = useState(true)
+  const [itemIsAdded,setItemIsAdded] = useState("Add to Cart")
+
+  cartCtx?.items.filter(item=>{
+    if(item.id == Number(productId) && itemIsAdded=="Add to Cart"){
+      setItemIsAdded("Added To Cart");
+    }
+  })
 
 
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true)
-      console.log("this is fetch function_______")
       const response = await fetch(`https://dummyjson.com/products/${productId}`);
       const jsonData = await response.json();
       setData(jsonData);
@@ -40,14 +52,18 @@ const ProductPage: React.FC = () => {
     return(<h1>Loading ...</h1>)
   }
 
+  function addItemToCartHandler(){
+    cartCtx?.addItemToCart(data?.id ?? 0)
+  }
+
 
   return (
     <>
       <div className="w-[1100px] m-auto py-20 sm:flex">
         <img src={data?.thumbnail} className="w-1/2 h-80" />
-        <div className="w-1/2 h-80 px-8 font-semibold">
-          <div className="text-6xl pb-6 text-orange-600">{data?.title}</div>
-          <div className="text-2xl pb-3">{data?.description}</div>
+        <div className="w-1/2 h-80 px-8 font-semibold tracking-wide">
+          <div className="text-5xl pb-6 text-orange-600 ">{data?.title}</div>
+          <div className="text-1xl pb-3">{data?.description}</div>
           <div>Brand : {data?.brand}</div>
           <div>Category : {data?.category}</div>
           <div>Stock left : {data?.stock}</div>
@@ -63,8 +79,8 @@ const ProductPage: React.FC = () => {
             Price : {data?.price} <BsCurrencyDollar className="inline" />
           </div>
           <div className="flex justify-start pt-3">
-            <button className="text-sm w-24 bg-orange-600 text-white rounded-sm h-8">
-              Buy Now
+            <button className="text-sm px-4 bg-orange-600 text-white rounded-sm h-8" onClick={addItemToCartHandler}>
+              {itemIsAdded}
             </button>
             <button>
               <FaRegHeart className="ml-12 text-2xl hover:text-orange-600" />
@@ -79,6 +95,7 @@ const ProductPage: React.FC = () => {
         </div>
       </div>
       <ProductGridImage list={data?.images}/>
+      <SimilarProduct category={data?.category}/>
     </>
   );
 };

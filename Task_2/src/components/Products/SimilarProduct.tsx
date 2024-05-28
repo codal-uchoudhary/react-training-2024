@@ -1,15 +1,18 @@
 import React from "react";
+import ProductCard from "./ProductCard";
 import { useState, useEffect, useCallback } from "react";
 import ProductCartList from "./ProductCardList";
 
-const ProductList: React.FC = () => {
+const SimilarProduct = (props: { category: string }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("https://dummyjson.com/products");
+      const response = await fetch(
+        `https://dummyjson.com/products/category/${props.category}`
+      );
       const jsonData = await response.json();
       setData(jsonData.products);
     } catch (error) {
@@ -17,7 +20,7 @@ const ProductList: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [props.category]);
 
   useEffect(() => {
     fetchData();
@@ -27,10 +30,11 @@ const ProductList: React.FC = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <div className="py-[100px]">
+    <>
+      <div className="text-base font-bold ml-10 my-10 tracking-wide ">Similar Products</div>
       <ProductCartList list={data} />
-    </div>
+    </>
   );
 };
 
-export default ProductList;
+export default SimilarProduct;
