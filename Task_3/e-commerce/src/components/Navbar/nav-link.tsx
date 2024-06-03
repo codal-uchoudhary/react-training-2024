@@ -8,7 +8,7 @@ interface childComponentProps {
 
 const NavLink: React.FC<childComponentProps> = ({ url, children }) => {
   return (
-    <li className="bg-red-200">
+    <li className="">
       <Link href={url}>{children}</Link>
     </li>
   );
