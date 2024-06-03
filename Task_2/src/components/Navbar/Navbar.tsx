@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
         <Link to="/products/category/skincare" className="text-center  pl-8 hover:text-orange-600">
           SKIN CARES
         </Link>
-        <button className="text-center  pl-8 hover:text-black relative" onClick={()=>{serFilterIsOpen(!filterIsOpen)}}>
+        <button className="text-center  pl-8 hover:text-black relative" onClick={()=>{serFilterIsOpen(!     IsOpen)}}>
           FILTER <IoMdArrowDropdown className="inline text-sm"/>
           {filterIsOpen && (
             <div className="absolute w-[130px] bg-slate-100 rounded-sm mt-2 z-10">
