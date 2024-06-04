@@ -6,9 +6,11 @@ interface childComponentProps {
   children: string;
 }
 
+
+
 const NavLink: React.FC<childComponentProps> = ({ url, children }) => {
   return (
-    <li className="">
+    <li className="mx-4 flex items-center hover:border-b-2 border-orange-600">
       <Link href={url}>{children}</Link>
     </li>
   );

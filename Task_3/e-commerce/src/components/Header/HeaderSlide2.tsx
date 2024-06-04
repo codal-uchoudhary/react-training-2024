@@ -1,10 +1,10 @@
-import ProductImg from '@/Assets/shoose.png';
+import ProductImg from '@/Assets/NikeS4.png';
 import ProductLogo from "@/Assets/pumaLogo.png"
 import Image from 'next/image';
 
-const HeaderSlide = () => {
+const HeaderSlide2 = () => {
   return (
-    <div className="flex w-full  px-8 p-10 h-full">
+    <div className="flex w-full  px-8 py-10 h-full">
       <div className="basis-1/2">
         <div className="text-2xl font-bold text-center pt-8 tracking-wider">
           LIMITED TIME ONLY
@@ -29,4 +29,4 @@ const HeaderSlide = () => {
   );
 };
 
-export default HeaderSlide;
+export default HeaderSlide2;
