@@ -1,5 +1,5 @@
 import ProductImg from '@/Assets/NikeNN2.png';
-import ProductLogo from "@/Assets/pumaLogo.png"
+import ProductLogo from "@/Assets/nikeLogo.png"
 import Image from 'next/image';
 
 const HeaderSlide4 = () => {
