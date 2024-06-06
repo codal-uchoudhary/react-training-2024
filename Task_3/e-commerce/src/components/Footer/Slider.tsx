@@ -28,14 +28,6 @@ const FooterSlider = () => {
   };
   return (
     <div className="slider-container w-11/12 m-auto bg-slate-500">
-      {/* <Slider {...settings}>
-            <Image src={b1} alt="b1" width={70}/>
-            <Image src={b2} alt="b1" width={100}/>
-            <Image src={b3} alt="b1" width={100}/>
-            <Image src={b4} alt="b1" width={100}/>
-            <Image src={b6} alt="b1" width={100}/>
-            <Image src={b5} alt="b1" width={100}/>
-      </Slider> */}
     </div>
   );
 };
