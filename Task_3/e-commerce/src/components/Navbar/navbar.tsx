@@ -9,11 +9,11 @@ import { CiHeart } from "react-icons/ci";
 import SearchBar from "./SearchBar";
 
 const NavbarList = [
-  { url: "/phone", title: "Phone" },
-  { url: "/laptop", title: "Laptop" },
-  { url: "/furniture", title: "Furniture" },
-  { url: "/clother", title: "Clothes" },
-  { url: "/man", title: "Man" },
+  { url: "tops", title: "Woman " },
+  { url: "laptops", title: "Laptop" },
+  { url: "furniture", title: "Furniture" },
+  { url: "smartphones", title: "Phone" },
+  { url: "groceries", title: "Groceries" },
 ];
 
 const NavbarIconList = [

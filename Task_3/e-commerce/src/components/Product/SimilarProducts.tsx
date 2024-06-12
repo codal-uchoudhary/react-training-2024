@@ -1,3 +1,4 @@
+'use clinet'
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import ProductList from "@/components/Product/ProductList";

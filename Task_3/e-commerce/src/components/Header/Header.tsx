@@ -26,7 +26,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="h-[430px] bg-slate-200 shadow-md w-full overflow-hidden ">
+    <div className="bg-slate-200 shadow-md w-full overflow-hidden ">
       {HeaderSlides.map((slide, index) => (
         <div key={index} className={index===currentHeaderSlide?'block':'hidden'}>{slide}</div>
       ))}

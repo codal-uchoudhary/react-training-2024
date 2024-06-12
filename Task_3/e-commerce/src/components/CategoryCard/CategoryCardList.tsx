@@ -13,18 +13,18 @@ import CategoryCard from "./CategoryCard"
 import manshirt from "@/Assets/Category/manShirtCat.jpg"
 
 const data = [
-    {image:skincare,title:"Skin care",off:30},
-    {image:smartPhone,title:"Smart phones",off:40},
-    {image:laptop,title:"Laptop",off:20},
-    {image:sunglasses,title:"Sunglasses",off:30},
-    {image:bags,title:"Bags",off:30},
-    {image:top,title:"Fashion",off:45},
-    {image:watch,title:"Watches",off:50},
-    {image:sport,title:"Sport Accessories",off:60},
-    {image:funiture,title:"Home Decoration",off:30},
-    {image:grocerry,title:"Grocerry",off:20},
-    {image:shoose,title:"Shoose",off:40},
-    {image:manshirt,title:"Man Shirt",off:50},
+    {image:skincare,title:"Skin care",off:30,category:"skin-care"},
+    {image:smartPhone,title:"Smart phones",off:40,category:"smartphones"},
+    {image:laptop,title:"Laptop",off:20,category:"laptops"},
+    {image:sunglasses,title:"Sunglasses",off:30,category:"sunglasses"},
+    {image:bags,title:"Bags",off:30,category:"womens-bags"},
+    {image:top,title:"Fashion",off:45,category:"tops"},
+    {image:watch,title:"Watches",off:50,category:"womens-watches"},
+    {image:sport,title:"Sport Accessories",off:60,category:"sports-accessories"},
+    {image:funiture,title:"Home Decoration",off:30,category:"furniture"},
+    {image:grocerry,title:"Grocerry",off:20,category:"groceries"},
+    {image:shoose,title:"Shoose",off:40,category:"womens-shoes"},
+    {image:manshirt,title:"Man Shirt",off:50,category:"mens-shirts"},
 ]
 
 const CategoryCardList=()=>{

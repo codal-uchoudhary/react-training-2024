@@ -9,5 +9,4 @@ const ProductList=(props:{list:ProductModel[]})=>{
     )
 }
 
-
 export default ProductList;

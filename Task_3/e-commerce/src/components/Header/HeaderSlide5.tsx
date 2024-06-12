@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HeaderSlide5 = () => {
   return (
-    <div className="flex w-full  px-8 py-10 h-full">
+    <div className="flex w-full  px-8 py-10 pb-10">
       <div className="basis-1/2">
         <div className=" flex justify-center mt-20">
           <Image src={ProductLogo} className="w-[200px]" alt="logo" />

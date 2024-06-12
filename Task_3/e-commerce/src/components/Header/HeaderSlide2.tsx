@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const HeaderSlide2 = () => {
   return (
-    <div className="flex w-full  px-8 py-10 h-full">
+    <div className="flex w-full  px-8 py-10 h-[480px]">
       <div className="basis-1/2">
         <div className="text-2xl font-bold text-center pt-8 tracking-wider">
           LIMITED TIME ONLY
