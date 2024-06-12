@@ -9,7 +9,7 @@ interface childComponentProps {
 
 const NavIcon: React.FC<childComponentProps> = ({ url, children ,title}) => {
   return (
-    <li>
+    <li className="mr-5 text-xs">
       <Link href={url}>
         <div className="flex flex-col items-center">
             {children}

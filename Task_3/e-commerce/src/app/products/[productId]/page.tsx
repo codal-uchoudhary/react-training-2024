@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { useState,useContext, useEffect,useCallback } from "react";
 import ProductModel from "@/Models/ProductModel";
@@ -7,15 +9,18 @@ import { GoStarFill } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { IoMdShare } from "react-icons/io";
-import SimilarProduct from "../../../components/Product/SimilarProducts";
 import ProductGridImage from "@/components/Product/ProductImageGrid";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'// import CartContext from "../../Store/ShoppingCart";
+import SimilarProduct from "@/components/Product/SimilarProducts"
 
 
 const ProductPage: React.FC = () => {
 
 //   const cartCtx = useContext(CartContext)
 
-//   const {productId} = useParams();
+  const productId = usePathname();
+  const segments = productId.split('/').filter(segment => segment !== '');
+  const id = segments[1]
 
 
 
@@ -33,8 +38,9 @@ const ProductPage: React.FC = () => {
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true)
-      const response = await fetch(`https://dummyjson.com/products/${2}`);
+      const response = await fetch(`https://dummyjson.com/products/${id}`);
       const jsonData = await response.json();
+      console.log(jsonData)
       setData(jsonData);
     } catch (error) {
       console.log("errors")
@@ -50,9 +56,9 @@ const ProductPage: React.FC = () => {
     return(<h1>Loading ...</h1>)
   }
 
-  function addItemToCartHandler(){
-    // cartCtx?.addItemToCart(data?.id ?? 0)
-  }
+//   function addItemToCartHandler(){
+//     cartCtx?.addItemToCart(data?.id ?? 0)
+//   }
 
 
   return (
@@ -77,7 +83,7 @@ const ProductPage: React.FC = () => {
             Price : {data?.price} <BsCurrencyDollar className="inline" />
           </div>
           <div className="flex justify-start pt-3">
-            <button className="text-sm px-4 bg-orange-600 text-white rounded-sm h-8" onClick={addItemToCartHandler}>
+            <button className="text-sm px-4 bg-orange-600 text-white rounded-sm h-8">
               {itemIsAdded}
             </button>
             <button>

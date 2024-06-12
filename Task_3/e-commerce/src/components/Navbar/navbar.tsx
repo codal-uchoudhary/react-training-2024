@@ -9,11 +9,11 @@ import { CiHeart } from "react-icons/ci";
 import SearchBar from "./SearchBar";
 
 const NavbarList = [
-  { url: "/phone", title: "Phone" },
-  { url: "/laptop", title: "Laptop" },
-  { url: "/furniture", title: "Furniture" },
-  { url: "/clother", title: "Clothes" },
-  { url: "/man", title: "Man" },
+  { url: "tops", title: "Woman " },
+  { url: "laptops", title: "Laptop" },
+  { url: "furniture", title: "Furniture" },
+  { url: "smartphones", title: "Phone" },
+  { url: "groceries", title: "Groceries" },
 ];
 
 const NavbarIconList = [
@@ -28,29 +28,29 @@ const NavbarIconList = [
 
 export default function Navbar() {
   return (
-    <div>
-      <nav className="flex px-4 h-[80px] shadow-md text-xs font-bold text-zinc-600 tracking-wider">
-        <div className="basis-6/12  flex justify-left items-center bg-slate-200">
+    <nav className="flex shadow-md text-sm font-semibold tracking-wide text-zinc-700">
+      <ul className="flex basis-2/4 justify-start ">
+        <li className="mx-6 flex items-center">
           <Link href="/">
-            <Image src={logo} alt="logo" width={70} />
+            <Image src={logo} alt="logo" width={70} priority/>
           </Link>
-          <ul className="list-none w-full flex justify-evenly text-sm tracking-wide font-semibold text-gray-700">
-            {NavbarList.map((item) => (
-              <NavLink url={item.url}>{item.title}</NavLink>
-            ))}
-          </ul>
-        </div>
-        <div className="basis-3/12 py-5 flex justify-center bg-pink-200">
-          <SearchBar />
-        </div>
-          <ul className="list-none flex justify-evenly text-sm tracking-wide font-semibold text-gray-700">
-            {NavbarIconList.map((item) => (
-              <NavIcon url={item.url} title={item.title}>
-                {item.icon}
-              </NavIcon>
-            ))}
-          </ul>
-      </nav>
-    </div>
+        </li>
+        {NavbarList.map((item) => (
+          <NavLink url={item.url}>{item.title}</NavLink>
+        ))}
+      </ul>
+
+      <div className="basis-1/4 py-5 flex justify-center">
+        <SearchBar/>
+      </div>
+
+      <ul className="flex basis-1/4 justify-end mr-2 items-center">
+        {NavbarIconList.map((item) => (
+          <NavIcon url={item.url} title={item.title}>
+            {item.icon}
+          </NavIcon>
+        ))}
+      </ul>
+    </nav>
   );
 }
