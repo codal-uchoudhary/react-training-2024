@@ -5,6 +5,7 @@ import "@/components/Navbar/Navbar";
 import Navbar from "@/components/Navbar/Navbar";
 import Vnavbar from "@/components/V-Navbar/vNavbar";
 const inter = Inter({ subsets: ["latin"] });
+import StoreProvider from "./storeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,15 +19,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="flex">
-          <Vnavbar />
-          <div className="w-full">
-            <Navbar />
-            {children}
+      <StoreProvider>
+        <body className={inter.className}>
+          <div className="flex">
+            <Vnavbar />
+            <div className="w-full">
+              <Navbar />
+              {children}
+            </div>
           </div>
-        </div>
-      </body>
+        </body>
+      </StoreProvider>
     </html>
   );
 }

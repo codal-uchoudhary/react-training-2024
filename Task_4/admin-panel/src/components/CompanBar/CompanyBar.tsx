@@ -21,7 +21,7 @@ const CompanyBar = () => {
     <div>
       <ul className="flex text-white">
         {companyData.map((item) => (
-          <li>
+          <li> 
             {item.logo}
           </li>
         ))}
